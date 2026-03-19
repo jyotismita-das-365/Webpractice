@@ -1,7 +1,13 @@
 const Facilities = () => {
   return (
     <>
-      <h1>facilities</h1>
+      <div>
+        <h1>College Facilities</h1>
+        <ul>Well Experienced Teachers</ul>
+        <ul>High Technology Facilities</ul>
+        <ul>Hostel Facilities</ul>
+        <ul>Wi–Fi enabled campus</ul>
+      </div>
     </>
   );
 };
