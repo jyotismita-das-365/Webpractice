@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { useState } from "react";
+import { Sun, ShoppingCart, Menu, X } from "lucide-react";
 import collegelogo from "../assets/logo.png";
 import Department from "./Department";
 import Contact from "./Contact";
@@ -9,6 +11,9 @@ import Banner from "./Banner";
 import Footer from "./Footer";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleMenu = () => setIsOpen(!isOpen);
+
   return (
     <>
       <BrowserRouter>
@@ -18,6 +23,8 @@ const Navbar = () => {
             alt="College Logo"
             className="h-20 border rounded-full mx-4"
           />
+          
+          {/* Deskto menu */}
           <div className="flex justify-evenly gap-10 text-white font-semibold text-lg">
             <Link to="/">Home</Link>
             <Link to="/Department">Department</Link>
@@ -26,7 +33,43 @@ const Navbar = () => {
             <Link to="/Facilities">Facilities</Link>
             <Link to="/Placement">Placement</Link>
           </div>
+
+          {/* Icons */}
+          <div className="flex items-center gap-6 text-gray-800">
+            <Link to="/ShoppingCart">
+            <ShoppingCart className="cursor-pointer hover:scale-110 transition"
+              size={24}/>
+            </Link>
+            
+            <Sun
+              className="cursor-pointer hover:scale-110 transition"
+              size={24}
+            />
+
+            {/* Mobile menu button */}
+            <button onClick={toggleMenu}
+              className="md:hidden hover:scale-110 transition">
+              {isOpen ? <X size={28}/> : <Menu size={28} />}
+            </button>
+            </div>
         </nav>
+
+        {/* Mobile menu */}
+        {isOpen && (
+          <div className="md:hidden bg-white border-t-2 border-gray-200 flex flex-col gap-4 p-6">
+            <Link to="/"
+              onClick={() => setIsOpen(false)}
+              className="text-gray-800 hover:text-gray-600 font-semibold">Home</Link>
+
+              <Link
+              to="/product"
+              onClick={() => setIsOpen(false)}
+              className="text-gray-800 hover:text-gray-600 font-semibold"
+            >
+              Product
+            </Link>
+          </div>
+        )}
 
         <Routes>
           <Route
