@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { useState } from "react";
-import { Sun, ShoppingCart, Menu, X } from "lucide-react";
+import { Sun, Menu, X } from "lucide-react";
 import collegelogo from "../assets/logo.png";
 import Department from "./Department";
 import Contact from "./Contact";
@@ -35,17 +35,7 @@ const Navbar = () => {
           </div>
 
           {/* Icons */}
-          <div className="flex items-center gap-6 text-gray-800">
-            <Link to="/ShoppingCart">
-            <ShoppingCart className="cursor-pointer hover:scale-110 transition"
-              size={24}/>
-            </Link>
-            
-            <Sun
-              className="cursor-pointer hover:scale-110 transition"
-              size={24}
-            />
-
+          <div className="flex items-center gap-6 text-gray-800"> 
             {/* Mobile menu button */}
             <button onClick={toggleMenu}
               className="md:hidden hover:scale-110 transition">
@@ -62,12 +52,28 @@ const Navbar = () => {
               className="text-gray-800 hover:text-gray-600 font-semibold">Home</Link>
 
               <Link
-              to="/product"
+              to="/department"
               onClick={() => setIsOpen(false)}
               className="text-gray-800 hover:text-gray-600 font-semibold"
             >
-              Product
+              Department
             </Link>
+
+            <Link to="/contact"
+              onClick={() => setIsOpen(false)}
+              className="text-gray-800 hover:text-gray-600 font-semibold">Contact</Link>
+
+              <Link to="/aboutUs"
+              onClick={() => setIsOpen(false)}
+              className="text-gray-800 hover:text-gray-600 font-semibold">About Us</Link>
+
+              <Link to="/facilities"
+              onClick={() => setIsOpen(false)}
+              className="text-gray-800 hover:text-gray-600 font-semibold">Facilities</Link>
+
+              <Link to="/placement"
+              onClick={() => setIsOpen(false)}
+              className="text-gray-800 hover:text-gray-600 font-semibold">Placement</Link>
           </div>
         )}
 
