@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { useState } from "react";
-import { Sun, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import collegelogo from "../assets/logo.png";
 import Department from "./Department";
 import Contact from "./Contact";
@@ -12,132 +12,219 @@ import Footer from "./Footer";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const [theme, setTheme] = useState(() => {
+    if (typeof window === "undefined") return "light";
+
+    const savedTheme = window.localStorage.getItem("theme");
+    if (savedTheme === "light" || savedTheme === "dark") {
+      return savedTheme;
+    }
+
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  });
+
+  const toggleMenu = () => setIsOpen((prev) => !prev);
+
+  useEffect(() => {
+    const root = document.documentElement;
+
+    root.classList.toggle("dark", theme === "dark");
+    window.localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
 
   return (
-    <>
-      <BrowserRouter>
-        <nav className="bg-gradient-to-t from-red-500 to-red-600 flex justify-between items-center p-2">
-          <img
-            src={collegelogo}
-            alt="College Logo"
-            className="h-20 border rounded-full mx-4"
-          />
-          
-          {/* Deskto menu */}
-          <div className="flex justify-evenly gap-10 text-white font-semibold text-lg">
-            <Link to="/">Home</Link>
-            <Link to="/Department">Department</Link>
-            <Link to="/Contact">Contact</Link>
-            <Link to="/AboutUs">About Us</Link>
-            <Link to="/Facilities">Facilities</Link>
-            <Link to="/Placement">Placement</Link>
-          </div>
+    <BrowserRouter>
+      <nav className="sticky top-0 z-50 flex items-center justify-between bg-gradient-to-t from-red-500 to-red-600 px-4 py-2 text-white shadow-lg shadow-black/10 backdrop-blur-md transition-colors duration-300 dark:from-slate-800 dark:border-2 dark:border-red-600 dark:to-slate-800 dark:shadow-black/30">
+        <img
+          src={collegelogo}
+          alt="College Logo"
+          className="h-14 rounded-full border border-white/70 sm:h-16 md:h-20"
+        />
 
-          {/* Icons */}
-          <div className="flex items-center gap-6 text-gray-800"> 
-            {/* Mobile menu button */}
-            <button onClick={toggleMenu}
-              className="md:hidden hover:scale-110 transition">
-              {isOpen ? <X size={28}/> : <Menu size={28} />}
-            </button>
-            </div>
-        </nav>
+        {/* Desktop menu */}
+        <div className="hidden items-center gap-8 text-base font-semibold lg:text-lg md:flex">
+          <Link
+            to="/"
+            className="transition hover:text-red-100 dark:hover:text-cyan-300"
+          >
+            Home
+          </Link>
+          <Link
+            to="/department"
+            className="transition hover:text-red-100 dark:hover:text-cyan-300"
+          >
+            Department
+          </Link>
+          <Link
+            to="/contact"
+            className="transition hover:text-red-100 dark:hover:text-cyan-300"
+          >
+            Contact
+          </Link>
+          <Link
+            to="/aboutus"
+            className="transition hover:text-red-100 dark:hover:text-cyan-300"
+          >
+            About Us
+          </Link>
+          <Link
+            to="/facilities"
+            className="transition hover:text-red-100 dark:hover:text-cyan-300"
+          >
+            Facilities
+          </Link>
+          <Link
+            to="/placement"
+            className="transition hover:text-red-100 dark:hover:text-cyan-300"
+          >
+            Placement
+          </Link>
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur transition hover:bg-white/20"
+            aria-label="Toggle dark mode"
+          >
+            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+            {theme === "dark" ? "Light" : "Dark"}
+          </button>
+        </div>
 
-        {/* Mobile menu */}
-        {isOpen && (
-          <div className="md:hidden bg-white border-t-2 border-gray-200 flex flex-col gap-4 p-6">
-            <Link to="/"
-              onClick={() => setIsOpen(false)}
-              className="text-gray-800 hover:text-gray-600 font-semibold">Home</Link>
+        {/* Mobile menu button */}
+        <div className="flex items-center gap-2 md:hidden">
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/10 p-2 backdrop-blur transition hover:bg-white/20"
+            aria-label="Toggle dark mode"
+          >
+            {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
 
-              <Link
-              to="/department"
-              onClick={() => setIsOpen(false)}
-              className="text-gray-800 hover:text-gray-600 font-semibold"
-            >
-              Department
-            </Link>
+          <button
+            onClick={toggleMenu}
+            className="text-white transition hover:scale-110"
+            aria-label="Toggle Menu"
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
+      </nav>
 
-            <Link to="/contact"
-              onClick={() => setIsOpen(false)}
-              className="text-gray-800 hover:text-gray-600 font-semibold">Contact</Link>
+      {/* Mobile menu */}
+      {isOpen && (
+        <div className="flex flex-col gap-4 border-t border-slate-200 bg-white px-6 py-4 text-slate-800 shadow-lg transition-colors duration-300 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 md:hidden">
+          <Link
+            to="/"
+            onClick={() => setIsOpen(false)}
+            className="font-semibold transition hover:text-red-600 dark:hover:text-cyan-300"
+          >
+            Home
+          </Link>
+          <Link
+            to="/department"
+            onClick={() => setIsOpen(false)}
+            className="font-semibold transition hover:text-red-600 dark:hover:text-cyan-300"
+          >
+            Department
+          </Link>
+          <Link
+            to="/contact"
+            onClick={() => setIsOpen(false)}
+            className="font-semibold transition hover:text-red-600 dark:hover:text-cyan-300"
+          >
+            Contact
+          </Link>
+          <Link
+            to="/aboutus"
+            onClick={() => setIsOpen(false)}
+            className="font-semibold transition hover:text-red-600 dark:hover:text-cyan-300"
+          >
+            About Us
+          </Link>
+          <Link
+            to="/facilities"
+            onClick={() => setIsOpen(false)}
+            className="font-semibold transition hover:text-red-600 dark:hover:text-cyan-300"
+          >
+            Facilities
+          </Link>
+          <Link
+            to="/placement"
+            onClick={() => setIsOpen(false)}
+            className="font-semibold transition hover:text-red-600 dark:hover:text-cyan-300"
+          >
+            Placement
+          </Link>
+        </div>
+      )}
 
-              <Link to="/aboutUs"
-              onClick={() => setIsOpen(false)}
-              className="text-gray-800 hover:text-gray-600 font-semibold">About Us</Link>
-
-              <Link to="/facilities"
-              onClick={() => setIsOpen(false)}
-              className="text-gray-800 hover:text-gray-600 font-semibold">Facilities</Link>
-
-              <Link to="/placement"
-              onClick={() => setIsOpen(false)}
-              className="text-gray-800 hover:text-gray-600 font-semibold">Placement</Link>
-          </div>
-        )}
-
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Banner />
-                <Department />
-                <AboutUs />
-                <Contact />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/Department"
-            element={
-              <>
-                <Department />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/Contact"
-            element={
-              <>
-                <Contact />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/AboutUs"
-            element={
-              <>
-                <AboutUs />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/Facilities"
-            element={
-              <>
-                <Facilities />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/Placement"
-            element={
-              <>
-                <Placement />
-                <Footer />
-              </>
-            }
-          />
-        </Routes>
-      </BrowserRouter>
-    </>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Banner />
+              <Department />
+              <AboutUs />
+              <Contact />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/department"
+          element={
+            <>
+              <Department />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <>
+              <Contact />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/aboutus"
+          element={
+            <>
+              <AboutUs />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/facilities"
+          element={
+            <>
+              <Facilities />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/placement"
+          element={
+            <>
+              <Placement />
+              <Footer />
+            </>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
