@@ -40,7 +40,7 @@ const Navbar = () => {
 
   return (
     <BrowserRouter>
-      <nav className="sticky top-0 z-50 flex items-center justify-between bg-gradient-to-t from-red-500 to-red-600 px-4 py-2 text-white shadow-lg shadow-black/10 backdrop-blur-md transition-colors duration-300 dark:from-slate-800 dark:border-2 dark:border-red-600 dark:to-slate-800 dark:shadow-black/30">
+      <nav className="sticky top-0 z-50 flex items-center justify-between bg-rose-600 px-4 py-2 text-white shadow-lg shadow-black/10 backdrop-blur-md transition-colors duration-300 dark:border-1 dark:border-rose-600 dark:bg-slate-950 dark:shadow-black/30">
         <img
           src={collegelogo}
           alt="College Logo"
@@ -174,6 +174,8 @@ const Navbar = () => {
               <Department />
               <AboutUs />
               <Contact />
+              <Facilities />
+              <Placement />
               <Footer />
             </>
           }

@@ -43,8 +43,8 @@ const Department = () => {
   };
 
   return (
-    <section className="bg-slate-100 px-6 py-12 transition-colors duration-300 dark:bg-slate-950">
-      <div className="max-w-6xl mx-auto">
+    <section className="bg-red-200 px-6 py-12 transition-colors duration-300 dark:bg-slate-800">
+      <div className="section-container">
         <div className="text-center mb-10">
           <h2 className="text-4xl font-bold text-slate-800 dark:text-slate-100">
             Explore Departments
@@ -58,7 +58,7 @@ const Department = () => {
           {departmentInfo.map((dept) => (
             <article
               key={dept.id}
-              className="group overflow-hidden rounded-2xl bg-white shadow-md transition-all duration-300 hover:shadow-xl dark:bg-slate-900 dark:shadow-black/20"
+              className="group overflow-hidden rounded-2xl bg-white shadow-md transition-all duration-300 hover:shadow-xl dark:bg-slate-950 dark:shadow-black/20"
             >
               <div className="relative">
                 <img

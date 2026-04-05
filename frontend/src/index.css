@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .section-container {
+    @apply mx-auto w-full max-w-6xl;
+  }
+}
+
 @layer base {
   html {
     @apply scroll-smooth;

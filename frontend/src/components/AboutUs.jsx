@@ -1,9 +1,9 @@
 const AboutUs = () => {
   return (
-    <section className="relative overflow-hidden bg-red-100 px-4 py-16 transition-colors duration-300 dark:bg-slate-400 sm:px-6 lg:px-12">
+    <section className="relative overflow-hidden bg-red-200 px-4 py-16 transition-colors duration-300 dark:bg-slate-800 sm:px-6 lg:px-12">
       {/* Decore section */}
-      <div className="relative mx-auto max-w-6xl">
-        <div className="rounded-3xl border border-white/50 bg-white/80 p-6 shadow-2xl backdrop-blur-md transition-colors duration-300 dark:border-slate-800 dark:bg-slate-900/80 sm:p-10">
+      <div className="section-container relative">
+        <div className="rounded-3xl border border-white/50 bg-white/80 p-6 shadow-2xl backdrop-blur-md transition-colors duration-300 dark:border-slate-800 dark:bg-slate-950/80 sm:p-10">
           <div className="mb-8 text-center">
             <h2 className="mt-4 text-3xl font-extrabold text-red-600 dark:text-emerald-200 sm:text-5xl">
               About Us
@@ -18,10 +18,10 @@ const AboutUs = () => {
           </p>
 
           <p className="mx-auto mb-10 max-w-4xl text-center text-base leading-relaxed text-gray-700 dark:text-slate-300 sm:text-lg">
-            Established in 1998, SSIET has become a
-            premium Educational Institute. The Institute, a venture of Sri
-            Sukhmani Group of Institutions, caters to offer best education in
-            the fields of Engineering, Computer Application & Management.
+            Established in 1998, SSIET has become a premium Educational
+            Institute. The Institute, a venture of Sri Sukhmani Group of
+            Institutions, caters to offer best education in the fields of
+            Engineering, Computer Application & Management.
           </p>
 
           <div className="grid gap-6 md:grid-cols-3">

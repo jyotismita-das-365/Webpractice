@@ -1,7 +1,7 @@
 const Contact = () => {
   return (
-    <section className="w-full bg-gradient-to-br from-red-50 via-red-50 to-rose-100 px-4 py-10 transition-colors duration-300 dark:from-slate-950 dark:via-slate-950 dark:to-slate-900 sm:px-6 lg:px-8">
-      <div className="mx-auto w-full max-w-4xl rounded-2xl bg-white/95 p-6 shadow-lg backdrop-blur transition-colors duration-300 dark:bg-slate-900/90 dark:shadow-black/20 sm:p-8 lg:p-10">
+    <section className="w-full bg-red-200 px-4 py-10 transition-colors duration-300 dark:bg-slate-800 sm:px-6 lg:px-8">
+      <div className="section-container rounded-2xl bg-white/95 p-6 shadow-lg backdrop-blur transition-colors duration-300 dark:bg-slate-950/90 dark:shadow-black/20 sm:p-8 lg:p-10">
         <h1 className="mb-8 text-center text-2xl font-bold text-red-500 dark:text-cyan-300 sm:text-3xl md:text-4xl">
           CONTACT US FOR ANY QUERY
         </h1>

@@ -50,8 +50,8 @@ const facilities = [
 
 const Facilities = () => {
   return (
-    <section className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-blue-50 px-4 py-12 transition-colors duration-300 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
+    <section className="min-h-screen bg-red-200 px-4 py-12 transition-colors duration-300 dark:bg-slate-800 sm:px-6 lg:px-8">
+      <div className="section-container">
         <div className="mb-12 text-center">
           <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl lg:text-5xl">
             Better Facilities for Better Learning

@@ -31,14 +31,8 @@ const companies = [
 
 const Placement = () => {
   return (
-    <section className="relative overflow-hidden bg-slate-50 py-16 transition-colors duration-300 dark:bg-slate-700 md:py-20">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-sky-300/30 blur-3xl" />
-        <div className="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-indigo-300/30 blur-3xl" />
-        <div className="absolute left-0 top-1/3 h-56 w-56 rounded-full bg-cyan-300/30 blur-3xl" />
-      </div>
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden bg-red-200 py-16 transition-colors duration-300 dark:bg-slate-800 md:py-20">
+      <div className="section-container relative px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <p className="inline-flex items-center rounded-full border border-blue-200 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-blue-700 backdrop-blur dark:border-slate-800 dark:bg-slate-900/80 dark:text-cyan-300">
             Placements
