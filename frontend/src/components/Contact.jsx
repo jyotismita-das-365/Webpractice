@@ -1,4 +1,58 @@
+import { useState } from "react";
+
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    description: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [message, setMessage] = useState("");
+  const [isError, setIsError] = useState(false);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setMessage("");
+    setIsError(false);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("http://localhost:3000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Failed to submit form");
+      }
+
+      setMessage(result.message || "Submitted successfully");
+      setFormData({
+        name: "",
+        phone: "",
+        description: "",
+      });
+    } catch (error) {
+      setIsError(true);
+      setMessage(error.message || "Something went wrong");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="w-full bg-red-200 px-4 py-10 transition-colors duration-300 dark:bg-slate-800 sm:px-6 lg:px-8">
       <div className="section-container rounded-2xl bg-white/95 p-6 shadow-lg backdrop-blur transition-colors duration-300 dark:bg-slate-950/90 dark:shadow-black/20 sm:p-8 lg:p-10">
@@ -6,7 +60,7 @@ const Contact = () => {
           CONTACT US FOR ANY QUERY
         </h1>
 
-        <form method="POST" className="space-y-5">
+        <form method="POST" onSubmit={handleSubmit} className="space-y-5">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
             <label
               htmlFor="name"
@@ -19,6 +73,9 @@ const Contact = () => {
               name="name"
               type="text"
               placeholder="Enter Your Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
               className="h-11 w-full rounded-md border border-red-200 bg-white px-3 text-sm text-slate-900 outline-none ring-red-400 transition placeholder:text-slate-400 focus:border-red-400 focus:ring-2 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-500 sm:text-base"
             />
           </div>
@@ -35,6 +92,9 @@ const Contact = () => {
               name="phone"
               type="tel"
               placeholder="Enter Your Phone Number"
+              value={formData.phone}
+              onChange={handleChange}
+              required
               className="h-11 w-full rounded-md border border-red-200 bg-white px-3 text-sm text-slate-900 outline-none ring-red-400 transition placeholder:text-slate-400 focus:border-red-400 focus:ring-2 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-500 sm:text-base"
             />
           </div>
@@ -51,15 +111,31 @@ const Contact = () => {
               name="description"
               rows={5}
               placeholder="Write your query..."
+              value={formData.description}
+              onChange={handleChange}
+              required
               className="w-full rounded-md border border-red-200 bg-white p-3 text-sm text-slate-900 outline-none ring-red-400 transition placeholder:text-slate-400 focus:border-red-400 focus:ring-2 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-500 sm:text-base"
             />
           </div>
 
+          {message && (
+            <p
+              className={`text-sm font-medium ${
+                isError
+                  ? "text-red-600 dark:text-red-400"
+                  : "text-emerald-600 dark:text-emerald-400"
+              }`}
+            >
+              {message}
+            </p>
+          )}
+
           <button
             type="submit"
+            disabled={isSubmitting}
             className="w-full rounded-md bg-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-cyan-600 dark:hover:bg-cyan-500 dark:focus:ring-cyan-300 sm:text-base"
           >
-            Submit
+            {isSubmitting ? "Submitting..." : "Submit"}
           </button>
         </form>
       </div>
