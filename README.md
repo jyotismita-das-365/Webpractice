@@ -37,7 +37,7 @@ A full-stack college website built with:
 6. Start backend:
    `npm run dev`
 
-Backend default URL: `http://localhost:4000`
+Backend default URL: `https://ssiet.onrender.com`
 
 ## Frontend Setup
 
@@ -50,4 +50,4 @@ Backend default URL: `http://localhost:4000`
 4. Start frontend:
    `npm run dev`
 
-Frontend default URL: `http://localhost:5173`
+Frontend default URL: `https://ssiet.onrender.com`
