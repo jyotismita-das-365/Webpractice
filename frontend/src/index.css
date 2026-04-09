@@ -1,23 +1,124 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer components {
-  .section-container {
-    @apply mx-auto w-full max-w-6xl;
+:root {
+  font-family: "DM Sans", "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+body.theme-dark {
+  color-scheme: dark;
+}
+
+body.theme-light {
+  color-scheme: light;
+}
+
+body.theme-light .text-white {
+  color: rgb(15 23 42) !important;
+}
+
+body.theme-light .text-slate-300,
+body.theme-light .text-slate-200 {
+  color: rgb(51 65 85) !important;
+}
+
+body.theme-light .home-hero-panel,
+body.theme-light .home-stat-panel,
+body.theme-light .home-dept-card,
+body.theme-light .home-banner-card {
+  background: #ffffff !important;
+  border-color: rgba(248, 113, 113, 0.28) !important;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08) !important;
+}
+
+body.theme-light .home-title {
+  color: rgb(15 23 42) !important;
+}
+
+body.theme-light .home-copy {
+  color: rgb(51 65 85) !important;
+}
+
+body.theme-light .home-accent {
+  color: rgb(127 29 29) !important;
+}
+
+body.theme-light .home-soft {
+  color: rgb(88 28 28) !important;
+}
+
+body.theme-dark .home-title,
+body.theme-dark .home-copy,
+body.theme-dark .home-soft {
+  color: rgb(226 232 240) !important;
+}
+
+body.theme-dark .home-accent {
+  color: rgb(254 202 202) !important;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.input-field {
+  @apply w-full rounded-xl border border-red-200/30 bg-slate-900 px-4 py-3 text-sm text-white placeholder:text-slate-300/70 outline-none transition focus:border-rose-300 focus:ring-2 focus:ring-rose-300/35;
+}
+
+body.theme-light .input-field {
+  @apply border-red-300/45 bg-white text-slate-800 placeholder:text-slate-500;
+}
+
+.store-shell {
+  @apply rounded-3xl border border-red-200/20 bg-slate-900 p-6 shadow-[0_20px_50px_rgba(0,0,0,0.35)];
+}
+
+body.theme-light .store-shell {
+  @apply border-red-300/45 bg-white shadow-[0_20px_50px_rgba(148,163,184,0.25)];
+}
+
+.store-primary-btn {
+  @apply rounded-xl bg-red-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-red-700;
+}
+
+.store-secondary-btn {
+  @apply rounded-xl border border-red-200/40 bg-red-800 px-5 py-3 text-sm font-semibold text-white transition hover:bg-red-900;
+}
+
+body.theme-light .store-secondary-btn {
+  @apply border-red-300/50 bg-red-100 text-slate-800;
+}
+
+.store-card {
+  @apply rounded-2xl border border-red-200/20 bg-slate-900 p-5 shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition hover:-translate-y-0.5 hover:border-red-200/35;
+}
+
+body.theme-light .store-card {
+  @apply border-red-300/45 bg-white shadow-[0_10px_30px_rgba(148,163,184,0.25)] hover:border-red-400/50;
+}
+
+.store-chip {
+  @apply rounded-full border border-red-300/35 bg-red-500/12 px-3 py-1 text-red-100;
+}
+
+body.theme-light .store-chip {
+  @apply border-red-400/45 bg-red-100 text-red-700;
+}
+
+@keyframes scroll-right {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(4px);
   }
 }
 
-@layer base {
-  html {
-    @apply scroll-smooth;
-  }
-
-  body {
-    @apply bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100;
-  }
-
-  #root {
-    min-height: 100vh;
-  }
+.scroll-icon-animate {
+  animation: scroll-right 1.2s ease-in-out infinite;
 }

@@ -1,19 +1,53 @@
-# Webpractice
-Move the exist code
+# Sri Sukhmani Institute Website (MERN + Tailwind)
 
-Configure terminal: git config --global user.name "user name"
-git config --global user.email "user email"
+A full-stack college website built with:
 
-1. git fetch : This downloads update from github.
-But does not change your code yet.
-2. git diff origin/main: Show line by line differences between your local code and latest github code
-3. git log HEAD..origin/main: Shows commits added by collaborators
-4. git pull origin main: This fetches changes and merges into your main
-5. git log: You will see new commits with author names(Your collaborators)
+- MongoDB + Mongoose
+- Express.js
+- React (Vite)
+- Node.js
+- Tailwind CSS v4
 
+## Features
 
-Pro workflow(use the sequence):
-git fetch
-git status
-git diff origin/main
-git pull
+- Modern multi-page engineering college frontend
+- B.Tech-only admissions flow with 4 departments (ME, EE, CSE, Civil)
+- Department photos and syllabus assets integrated on the website
+- Contact form (stored in MongoDB)
+- Events listing + add event functionality
+- Teacher Host section with full CRUD on store updates
+- Student Store section to view teacher updates in real time
+- Live campus stats endpoint
+- Reusable React component architecture
+
+## Project Structure
+
+- `backend/` - Express API + MongoDB models
+- `frontend/` - React + Tailwind client app
+
+## Backend Setup
+
+1. Go to backend folder:
+   `cd backend`
+2. Create env file:
+   Copy `.env.example` to `.env`
+3. Update MongoDB connection string in `.env`
+5. Install dependencies (already installed):
+   `npm install`
+6. Start backend:
+   `npm run dev`
+
+Backend default URL: `http://localhost:5000`
+
+## Frontend Setup
+
+1. Go to frontend folder:
+   `cd frontend`
+2. Create env file:
+   Copy `.env.example` to `.env`
+3. Install dependencies (already installed):
+   `npm install`
+4. Start frontend:
+   `npm run dev`
+
+Frontend default URL: `http://localhost:5173`

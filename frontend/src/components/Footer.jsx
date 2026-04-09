@@ -1,137 +1,124 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
-const Footer = () => {
-  const year = new Date().getFullYear();
-
+const Footer = ({ theme }) => {
   return (
-    <footer className="bg-rose-600 text-red-100 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300">
-      <div className="section-container grid grid-cols-1 gap-10 px-6 py-12 sm:grid-cols-2 lg:grid-cols-4">
-        <div>
-          <div className="flex items-center gap-2">
-            <h2 className="text-2xl font-bold text-white dark:text-slate-100">
+    <footer
+      className={`border-t ${
+        theme === "light"
+          ? "border-red-300/30 bg-red-700"
+          : "border-white/10 bg-slate-900"
+      }`}
+    >
+      <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
+        <div
+          className={`grid gap-8 md:grid-cols-4 ${
+            theme === "light" ? "text-red-50" : "text-slate-200"
+          }`}
+        >
+          <div>
+            <h3 className="font-serif text-2xl font-extrabold text-amber-100 sm:text-3xl">
               SSIET
-            </h2>
+            </h3>
+            <p className="mt-2 max-w-xs text-sm text-red-50">
+              Where Learning Meets Excellence
+            </p>
           </div>
-          <p className="mt-3 text-sm text-red-100/80 dark:text-slate-400">
-            Where Learning Meets Excellence
-          </p>
-        </div>
 
-        <div>
-          <h3 className="text-lg font-semibold text-white dark:text-slate-100">
-            Quick Links
-          </h3>
-          <ul className="mt-4 space-y-2 text-sm">
-            <li>
-              <a
-                href="/"
-                className="text-red-100 transition-colors hover:text-white dark:text-slate-400 dark:hover:text-cyan-300"
+          <div>
+            <h4 className="text-sm font-semibold uppercase text-yellow-300">
+              Quick Links
+            </h4>
+            <div className="mt-3 grid gap-2 text-sm">
+              <Link
+                to="/"
+                className="text-red-50 transition hover:text-amber-100"
               >
                 Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="/aboutus"
-                className="text-red-100 transition-colors hover:text-white dark:text-slate-400 dark:hover:text-cyan-300"
+              </Link>
+              <Link
+                to="/about"
+                className="text-red-50 transition hover:text-amber-100"
               >
                 About
-              </a>
-            </li>
-            <li>
-              <a
-                href="/department"
-                className="text-red-100 transition-colors hover:text-white dark:text-slate-400 dark:hover:text-cyan-300"
+              </Link>
+              <Link
+                to="/department"
+                className="text-red-50 transition hover:text-amber-100"
               >
                 Department
-              </a>
-            </li>
-            <li>
-              <a
-                href="/contact"
-                className="text-red-100 transition-colors hover:text-white dark:text-slate-400 dark:hover:text-cyan-300"
+              </Link>
+              <Link
+                to="/contact"
+                className="text-red-50 transition hover:text-amber-100"
               >
                 Contact
-              </a>
-            </li>
-          </ul>
-        </div>
+              </Link>
+            </div>
+          </div>
 
-        <div>
-          <h3 className="text-lg font-semibold text-white dark:text-slate-100">
-            Important
-          </h3>
-          <ul className="mt-4 space-y-2 text-sm">
-            <li>
-              <a
-                href="/department"
-                className="text-red-100 transition-colors hover:text-white dark:text-slate-400 dark:hover:text-cyan-300"
+          <div>
+            <h4 className="text-sm font-semibold uppercase text-yellow-300">
+              Important
+            </h4>
+            <div className="mt-3 grid gap-2 text-sm">
+              <Link
+                to="/department"
+                className="text-red-50 transition hover:text-amber-100"
               >
                 Privacy Policy
-              </a>
-            </li>
-            <li>
-              <a
-                href="/department"
-                className="text-red-100 transition-colors hover:text-white dark:text-slate-400 dark:hover:text-cyan-300"
+              </Link>
+              <Link
+                to="/department"
+                className="text-red-50 transition hover:text-amber-100"
               >
                 Terms & Conditions
-              </a>
-            </li>
-            <li>
-              <a
-                href="/department"
-                className="text-red-100 transition-colors hover:text-white dark:text-slate-400 dark:hover:text-cyan-300"
+              </Link>
+              <Link
+                to="/department"
+                className="text-red-50 transition hover:text-amber-100"
               >
                 FAQ
-              </a>
-            </li>
-            <li>
-              <a
-                href="/department"
-                className="text-red-100 transition-colors hover:text-white dark:text-slate-400 dark:hover:text-cyan-300"
+              </Link>
+              <Link
+                to="/contact"
+                className="text-red-50 transition hover:text-amber-100"
               >
                 Support
-              </a>
-            </li>
-          </ul>
-        </div>
+              </Link>
+            </div>
+          </div>
 
-        <div>
-          <h3 className="text-lg font-semibold text-white dark:text-slate-100">
-            Contact
-          </h3>
-          <ul className="mt-4 space-y-2 text-sm">
-            <li>
+          <div>
+            <h4 className="text-sm font-semibold uppercase text-yellow-300">
+              Contact
+            </h4>
+            <div className="mt-3 grid gap-2 text-sm">
               <a
-                href="mailto:support@webpractice.com"
-                className="text-red-100 transition-colors hover:text-white dark:text-slate-400 dark:hover:text-cyan-300"
+                href="mailto:sukhmani@gmail.com"
+                className="text-red-50 transition hover:text-amber-100"
               >
                 sukhmani@gmail.com
               </a>
-            </li>
-            <li>
               <a
-                href="tel:+911234567890"
-                className="text-red-100 transition-colors hover:text-white dark:text-slate-400 dark:hover:text-cyan-300"
+                href="tel:+918699609193"
+                className="text-red-50 transition hover:text-amber-100"
               >
                 +91 86996 09193
               </a>
-            </li>
-            <li>
-              <a
-                href="/location"
-                className="text-red-100 transition-colors hover:text-white dark:text-slate-400 dark:hover:text-cyan-300"
-              >
-                Chandigarh, India
-              </a>
-            </li>
-          </ul>
+              <span className="text-red-50">Chandigarh, India</span>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div className="border-t border-red-600 py-4 text-center text-sm text-red-100/80 dark:border-slate-800 dark:text-slate-500">
-        <p>© {year} SSIET. All rights reserved.</p>
+        <p
+          className={`mt-8 border-t pt-5 text-center text-xs ${
+            theme === "light"
+              ? "border-red-200/25 text-red-50"
+              : "border-white/10 text-slate-300"
+          }`}
+        >
+          © {new Date().getFullYear()} SSIET. All rights reserved.
+        </p>
       </div>
     </footer>
   );
