@@ -29,66 +29,66 @@ export const saveAuthSession = (authPayload) => {
 };
 
 export const fetchCurrentUser = async () => {
-  const { data } = await api.get("/auth/me");
+  const { data } = await api.get("/api/auth/me");
   return data.user;
 };
 
 export const loginUser = async (payload) => {
-  const { data } = await api.post("/auth/login", payload);
+  const { data } = await api.post("/api/auth/login", payload);
   return data;
 };
 
 export const registerUser = async (payload) => {
-  const { data } = await api.post("/auth/register", payload);
+  const { data } = await api.post("/api/auth/register", payload);
   return data;
 };
 
 export const fetchStats = async () => {
-  const { data } = await api.get("/stats");
+  const { data } = await api.get("/api/stats");
   return data;
 };
 
 export const fetchEvents = async () => {
-  const { data } = await api.get("/events");
+  const { data } = await api.get("/api/events");
   return data;
 };
 
 export const createContact = async (payload) => {
-  const { data } = await api.post("/contacts", payload);
+  const { data } = await api.post("/api/contacts", payload);
   return data;
 };
 
 export const createInquiry = async (payload) => {
-  const { data } = await api.post("/inquiries", payload);
+  const { data } = await api.post("/api/inquiries", payload);
   return data;
 };
 
 export const createStudentQuery = async (payload) => {
-  const { data } = await api.post("/student-queries", payload);
+  const { data } = await api.post("/api/student-queries", payload);
   return data;
 };
 
 export const createEvent = async (payload) => {
-  const { data } = await api.post("/events", payload);
+  const { data } = await api.post("/api/events", payload);
   return data;
 };
 
 export const fetchStoreItems = async () => {
-  const { data } = await api.get("/store");
+  const { data } = await api.get("/api/store");
   return data;
 };
 
 export const createStoreItem = async (payload) => {
-  const { data } = await api.post("/store", payload);
+  const { data } = await api.post("/api/store", payload);
   return data;
 };
 
 export const updateStoreItem = async (id, payload) => {
-  const { data } = await api.put(`/store/${id}`, payload);
+  const { data } = await api.put(`/api/store/${id}`, payload);
   return data;
 };
 
 export const deleteStoreItem = async (id) => {
-  const { data } = await api.delete(`/store/${id}`);
+  const { data } = await api.delete(`/api/store/${id}`);
   return data;
 };
