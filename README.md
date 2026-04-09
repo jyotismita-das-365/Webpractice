@@ -37,7 +37,7 @@ A full-stack college website built with:
 6. Start backend:
    `npm run dev`
 
-Backend default URL: `http://localhost:5000`
+Backend default URL: `http://localhost:4000`
 
 ## Frontend Setup
 
