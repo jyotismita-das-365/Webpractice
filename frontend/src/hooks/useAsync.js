@@ -16,7 +16,6 @@ const useAsync = (asyncFunction, immediate = true) => {
       } catch (err) {
         console.warn("Async function error:", err);
         setError(err);
-        // Don't re-throw to prevent component crash
         return null;
       } finally {
         setLoading(false);
@@ -29,7 +28,6 @@ const useAsync = (asyncFunction, immediate = true) => {
     if (immediate) {
       run().catch((err) => {
         console.warn("Initial async call failed:", err);
-        // Silently handle initial load errors
       });
     }
   }, [immediate, run]);

@@ -40,8 +40,6 @@ export const AuthProvider = ({ children }) => {
         const currentUser = await fetchCurrentUser();
         setUser(currentUser);
       } catch (error) {
-        // Only clear session if token is definitely invalid
-        // Keep locally stored user if fetch fails (network issue, etc)
         console.warn("Auth bootstrap fetch failed:", error.message);
         if (storedUser) {
           try {

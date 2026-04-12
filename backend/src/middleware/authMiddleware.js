@@ -69,7 +69,6 @@ const protect = async (req, res, next) => {
       throw new Error("Not authorized, token failed");
     }
 
-    // Ensure role is set on user object
     user.role = role;
     req.user = user;
     next();

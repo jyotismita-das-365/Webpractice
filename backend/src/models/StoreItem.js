@@ -10,7 +10,7 @@ const storeItemSchema = new mongoose.Schema(
     department: {
       type: String,
       required: true,
-      enum: ["ME", "EE", "CSE", "Civil Engineering"],
+      enum: ["ME", "EE", "CSE", "Civil Engineering", "All Departments"],
       default: "CSE",
     },
     type: {
@@ -28,7 +28,6 @@ const storeItemSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      default: "Teacher",
     },
   },
   { timestamps: true },

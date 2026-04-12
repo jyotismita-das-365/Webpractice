@@ -120,7 +120,11 @@ const Navbar = ({ theme, toggleTheme }) => {
               </>
             ) : (
               <>
-                <div className="rounded-lg border border-red-300/40 bg-red-500/10 px-2 py-1.5 text-xs font-semibold uppercase tracking-wider text-red-100 sm:rounded-xl sm:px-3 sm:py-2">
+                <div
+                  className={`rounded-lg border border-red-300/40 bg-red-500/10 px-2 py-1.5 text-xs font-semibold uppercase tracking-wider sm:rounded-xl sm:px-3 sm:py-2 ${
+                    theme === "light" ? "text-black" : "text-white"
+                  }`}
+                >
                   {user.role}
                 </div>
                 <Link

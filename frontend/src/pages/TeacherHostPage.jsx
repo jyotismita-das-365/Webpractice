@@ -2,6 +2,7 @@ import { useState } from "react";
 import SectionTitle from "../components/SectionTitle";
 import LoadingState from "../components/LoadingState";
 import useAsync from "../hooks/useAsync";
+import { useAuth } from "../context/AuthContext";
 import {
   createStoreItem,
   deleteStoreItem,
@@ -9,15 +10,16 @@ import {
   updateStoreItem,
 } from "../services/api";
 
-const initialForm = {
-  title: "",
-  department: "CSE",
-  type: "Notice",
-  description: "",
-  updatedBy: "Teacher",
-};
-
 const TeacherHostPage = () => {
+  const { user } = useAuth();
+  const initialForm = {
+    title: "",
+    department: "All Departments",
+    type: "Notice",
+    description: "",
+    updatedBy: "",
+  };
+
   const {
     data: items = [],
     loading,
@@ -124,7 +126,7 @@ const TeacherHostPage = () => {
             value={formData.updatedBy}
             onChange={handleChange}
             required
-            placeholder="Updated by"
+            placeholder="Updated by (Your name)"
             className="input-field"
           />
           <select
@@ -133,6 +135,7 @@ const TeacherHostPage = () => {
             onChange={handleChange}
             className="input-field"
           >
+            <option>All Departments</option>
             <option>ME</option>
             <option>EE</option>
             <option>CSE</option>
@@ -192,7 +195,7 @@ const TeacherHostPage = () => {
                 <p className="mt-2 text-sm text-slate-300">
                   {item.description}
                 </p>
-                <p className="mt-3 text-sm text-white">
+                <p className="mt-3 text-sm text-slate-300">
                   Updated by: {item.updatedBy}
                 </p>
                 <div className="mt-4 flex gap-3">
