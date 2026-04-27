@@ -105,7 +105,7 @@ const Footer = ({ theme }) => {
               >
                 +91 86996 09193
               </a>
-              <span className="text-red-50">Chandigarh, India</span>
+              <span className="text-red-50">Chandigaarh, India</span>
             </div>
           </div>
         </div>

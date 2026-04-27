@@ -83,9 +83,6 @@ const HomePage = () => {
 
       <section className="home-hero-panel grid items-center gap-8 rounded-3xl border p-6 backdrop-blur md:grid-cols-2 md:p-10">
         <div className="space-y-5">
-          <p className="home-accent inline-flex rounded-full border border-red-300/40 bg-red-400/15 px-4 py-1 text-xs uppercase tracking-[0.2em]">
-            About Us
-          </p>
           <h2 className="home-title font-serif text-4xl leading-tight sm:text-5xl">
             Welcome to SSIET
           </h2>
